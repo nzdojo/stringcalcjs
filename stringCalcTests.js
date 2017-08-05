@@ -36,6 +36,20 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("'1' + '1' returns '2'", function (done) {
+        // 1. Setup
+        var expectedResult = '2';
+        
+        // 2. Exercise
+        var result = stringCalc.Add('1', '1');
+        
+        // 3. Verify
+        assert(result === expectedResult, 'Nothing defined yet');
+        
+        // 4. Cleanup & Finish
+        done();
+    });
+    
     it("It's a string calculator and therefore it needs to return a string result", function (done) {
         // 1. Setup
         
