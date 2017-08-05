@@ -63,4 +63,18 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("The first operand needs to be a number, if it's not then return 'Err'.  No exceptions used in this implementation", function (done) {
+        // 1. Setup
+        var expectedResult = 'Err';
+        
+        // 2. Exercise
+        var result = stringCalc.Add('0', 'Z');
+        
+        // 3. Verify
+        assert(result == expectedResult, "We expect to have an error string 'Err'");
+        
+        // 4. Cleanup & Finish
+        done();
+    });
+    
 });
