@@ -57,7 +57,21 @@ describe("String Calculator Tests", function () {
         var result = stringCalc.Add('0', '0');
         
         // 3. Verify
-        assert(typeof result == 'string', 'Nothing defined yet');
+        assert(typeof result == 'string', 'Should be a string');
+        
+        // 4. Cleanup & Finish
+        done();
+    });
+    
+    it("Adding two very large numbers", function (done) {
+        // 1. Setup
+        var expectedResult = '2000000111111111111';
+        
+        // 2. Exercise
+        var result = stringCalc.Add('1000000000111000111', '1000000111000111000');
+        
+        // 3. Verify
+        assert(result == 'expectedResult', 'Adding two large numbers did not work, expected ' + expectedResult + ' but got ' + result);
         
         // 4. Cleanup & Finish
         done();
