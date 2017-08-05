@@ -36,5 +36,17 @@ describe("String Calculator Tests", function () {
         done();
     });
     
-
+    it("It's a string calculator and therefore it needs to return a string result", function (done) {
+        // 1. Setup
+        
+        // 2. Exercise
+        var result = stringCalc.Add('0', '0');
+        
+        // 3. Verify
+        assert(typeof result == 'string', 'Nothing defined yet');
+        
+        // 4. Cleanup & Finish
+        done();
+    });
+    
 });
