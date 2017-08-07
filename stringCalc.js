@@ -12,12 +12,16 @@ StringCalc.prototype.Add = function (operand1, operand2) {
         longestNumberLength = lengthOperand2;
         
     for (var i = 0; i < longestNumberLength; i++) {
-        var number1 = parseInt(operand1.charAt(i), 10);
+        var number1 = 0;
+        if (i < lengthOperand1)        
+            number1 = parseInt(operand1.charAt(i), 10);
         if (isNaN(number1)) return errResult;
+        
         var number2 = 0;
         if (i < lengthOperand2)
             number2 = parseInt(operand2.charAt(i), 10);
-        if (isNaN(number2)) return errResult;        
+        if (isNaN(number2)) return errResult;    
+        
         var intermediateResult = number1 + number2;
         result = intermediateResult.toString() + result;
     }

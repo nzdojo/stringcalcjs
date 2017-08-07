@@ -37,8 +37,13 @@ describe("String Calculator Tests", function () {
         done();
     });
     
-    it("'11' + '1' returns '12' - this is demonstrating addition on varyong length strings", function (done) {
+    it("'11' + '1' returns '12' - this is demonstrating addition on varying length strings", function (done) {
         exerciseAndVerify('11', '1', '12');
+        done();
+    });
+    
+    it("'1' + '11' returns '12' - this is demonstrating addition on varying length strings, where the second number has more digits than the first", function (done) {
+        exerciseAndVerify('1', '11', '12');
         done();
     });
     
