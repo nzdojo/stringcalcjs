@@ -97,6 +97,21 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("'-11' + '-29' returns '-40'", function (done) {
+        exerciseAndVerify('-11', '-29', '-40');
+        done();
+    });
+    
+    it("'-111' + '-29' returns '-140'", function (done) {
+        exerciseAndVerify('-111', '-29', '-140');
+        done();
+    });
+    
+    it("'-100' + '29' returns '-71'", function (done) {
+        exerciseAndVerify('-100', '-29', '-71');
+        done();
+    });
+    
     it("It's a string calculator and therefore it needs to return a string result", function (done) {
         // 1. Setup
         
