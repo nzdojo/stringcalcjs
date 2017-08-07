@@ -4,9 +4,16 @@ function StringCalc() {
 StringCalc.prototype.Add = function (operand1, operand2) {
     var result = '';
     var errResult = 'Err';
-
+    var isSubtraction = false;
     var lengthOperand1 = operand1.length;
     var lengthOperand2 = operand2.length;
+    
+    if (operand1.charAt(0) === "-") {
+        operand1 = operand1.substr(1);
+        isSubtraction = true;
+        lengthOperand1--;
+    }
+    
     var longestNumberLength = lengthOperand1;
     var overflow = '';
     if (lengthOperand2 > longestNumberLength)
@@ -37,7 +44,11 @@ StringCalc.prototype.Add = function (operand1, operand2) {
             if (isNaN(number2)) return errResult;                
         }   
         
-        var intermediateResult = number1 + number2;
+        var intermediateResult = 0;
+        if (isSubtraction)
+            intermediateResult = number1 - number2;
+        else
+            intermediateResult = number1 + number2;
         if (intermediateResult > 9) {
             var overflowResult = intermediateResult.toString();
             overflow = overflowResult.substring(0, 1);
