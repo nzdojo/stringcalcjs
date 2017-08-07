@@ -7,16 +7,18 @@ StringCalc.prototype.Add = function (operand1, operand2) {
     var isSubtraction = false;
     var lengthOperand1 = operand1.length;
     var lengthOperand2 = operand2.length;
+    var isResultNegative = false;
     
     if (operand1.charAt(0) === "-") {
         operand1 = operand1.substr(1);
-        isSubtraction = true;
+        isSubtraction = !isSubtraction;
         lengthOperand1--;
     }
     
     if (operand2.charAt(0) === "-") {
         operand2 = operand2.substr(1);
-        isSubtraction = true;
+        isResultNegative = isSubtraction;
+        isSubtraction = !isSubtraction;
         lengthOperand2--;
     }
     
@@ -66,6 +68,8 @@ StringCalc.prototype.Add = function (operand1, operand2) {
     }
     if (overflow.length > 0)
         result = overflow + result;
+    if (isResultNegative)
+        result = '-' + result;
     return result;
 };
     
