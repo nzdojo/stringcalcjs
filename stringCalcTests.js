@@ -37,6 +37,11 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("'11' + '1' returns '12' - this is demonstrating addition on varyong length strings", function (done) {
+        exerciseAndVerify('11', '1', '12');
+        done();
+    });
+    
     it("It's a string calculator and therefore it needs to return a string result", function (done) {
         // 1. Setup
         
