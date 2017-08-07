@@ -62,6 +62,16 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("'115' + '9' returns '124' - checking addition overflow with three digit number first number and single digit number", function (done) {
+        exerciseAndVerify('115', '9', '124');
+        done();
+    });
+    
+    it("'9' + '115' returns '124' - checking addition overflow with one digit number number and three digit number", function (done) {
+        exerciseAndVerify('9', '115', '124');
+        done();
+    });
+    
     it("It's a string calculator and therefore it needs to return a string result", function (done) {
         // 1. Setup
         
