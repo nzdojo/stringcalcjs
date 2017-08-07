@@ -14,6 +14,12 @@ StringCalc.prototype.Add = function (operand1, operand2) {
         lengthOperand1--;
     }
     
+    if (operand2.charAt(0) === "-") {
+        operand2 = operand2.substr(1);
+        isSubtraction = true;
+        lengthOperand2--;
+    }
+    
     var longestNumberLength = lengthOperand1;
     var overflow = '';
     if (lengthOperand2 > longestNumberLength)
