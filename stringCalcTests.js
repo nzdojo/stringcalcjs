@@ -20,33 +20,20 @@ describe("String Calculator Tests", function () {
 
     });
     
+    function exerciseAndVerify(operand1, operand2, expectedResult) {
+        var result = stringCalc.Add(operand1, operand2);
+        assert(result === expectedResult, 'Expecting to get ' + expectedResult + ' but got ' + result);
+    }
+    
     // 2. Module Exercise
     
     it("'0' + '0' returns '0'", function (done) {
-        // 1. Setup
-        var expectedResult = '0';
-        
-        // 2. Exercise
-        var result = stringCalc.Add('0', '0');
-        
-        // 3. Verify
-        assert(result === expectedResult, 'Nothing defined yet');
-        
-        // 4. Cleanup & Finish
+        exerciseAndVerify('0', '0', '0');
         done();
     });
     
     it("'1' + '1' returns '2'", function (done) {
-        // 1. Setup
-        var expectedResult = '2';
-        
-        // 2. Exercise
-        var result = stringCalc.Add('1', '1');
-        
-        // 3. Verify
-        assert(result === expectedResult, 'Nothing defined yet');
-        
-        // 4. Cleanup & Finish
+        exerciseAndVerify('1', '1', '2');
         done();
     });
     
@@ -63,20 +50,20 @@ describe("String Calculator Tests", function () {
         done();
     });
     
-    it("Adding two very large numbers, one number is neagtive of the other and therefore the result is zero", function (done) {
-        // 1. Setup
-        var expectedResult = '0';
-        var extremelyLargeNumber = '189769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001';
+    // it("Adding two very large numbers, one number is neagtive of the other and therefore the result is zero", function (done) {
+    //     // 1. Setup
+    //     var expectedResult = '0';
+    //     var extremelyLargeNumber = '189769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001';
         
-        // 2. Exercise
-        var result = stringCalc.Add(extremelyLargeNumber, '-' + extremelyLargeNumber);
+    //     // 2. Exercise
+    //     var result = stringCalc.Add(extremelyLargeNumber, '-' + extremelyLargeNumber);
         
-        // 3. Verify
-        assert(result == expectedResult, 'Expecting to get ' + expectedResult + ' but got ' + result);
+    //     // 3. Verify
+    //     assert(result == expectedResult, 'Expecting to get ' + expectedResult + ' but got ' + result);
         
-        // 4. Cleanup & Finish
-        done();
-    });
+    //     // 4. Cleanup & Finish
+    //     done();
+    // });
     
     it("The first operand needs to be a number, if it's not then return 'Err'.  No exceptions used in this implementation", function (done) {
         // 1. Setup
