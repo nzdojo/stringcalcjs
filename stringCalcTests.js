@@ -52,6 +52,16 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("'5' + '9' returns '14' - checking addition overflow with single digit numbers", function (done) {
+        exerciseAndVerify('5', '9', '14');
+        done();
+    });
+    
+    it("'15' + '9' returns '24' - checking addition overflow with double digit number first number and single digit number", function (done) {
+        exerciseAndVerify('15', '9', '24');
+        done();
+    });
+    
     it("It's a string calculator and therefore it needs to return a string result", function (done) {
         // 1. Setup
         
