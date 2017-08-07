@@ -47,6 +47,11 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("'11' + '11' returns '22' - two digit numbers addition", function (done) {
+        exerciseAndVerify('11', '11', '22');
+        done();
+    });
+    
     it("It's a string calculator and therefore it needs to return a string result", function (done) {
         // 1. Setup
         
