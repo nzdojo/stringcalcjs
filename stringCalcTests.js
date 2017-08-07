@@ -67,8 +67,18 @@ describe("String Calculator Tests", function () {
         done();
     });
     
-    it("'9' + '115' returns '124' - checking addition overflow with one digit number number and three digit number", function (done) {
+    it("'9' + '115' returns '124' - checking addition overflow with one digit  number and three digit number", function (done) {
         exerciseAndVerify('9', '115', '124');
+        done();
+    });
+    
+    it("'19' + '115' returns '134' - checking addition overflow with two digit number and three digit number", function (done) {
+        exerciseAndVerify('19', '115', '134');
+        done();
+    });
+    
+    it("'119' + '115' returns '234' - checking addition overflow with three digit number and three digit number", function (done) {
+        exerciseAndVerify('119', '115', '234');
         done();
     });
     
