@@ -108,7 +108,12 @@ describe("String Calculator Tests", function () {
     });
     
     it("'-100' + '29' returns '-71'", function (done) {
-        exerciseAndVerify('-100', '-29', '-71');
+        exerciseAndVerify('-100', '29', '-71');
+        done();
+    });
+    
+    it("'100' + '-29' returns '71'", function (done) {
+        exerciseAndVerify('100', '-29', '71');
         done();
     });
     
