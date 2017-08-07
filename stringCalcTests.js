@@ -82,6 +82,11 @@ describe("String Calculator Tests", function () {
         done();
     });
     
+    it("'-1' + '1' returns '0' - checking addition of a negative number and a positive number", function (done) {
+        exerciseAndVerify('-1', '1', '0');
+        done();
+    });
+    
     it("It's a string calculator and therefore it needs to return a string result", function (done) {
         // 1. Setup
         
