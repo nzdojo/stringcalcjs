@@ -27,9 +27,15 @@ StringCalc.prototype.Add = function (operand1, operand2) {
         }
         
         var number2 = 0;
-        if (lengthOperand2 >= 0)
-            number2 = parseInt(operand2.charAt(lengthOperand2), 10);
-        if (isNaN(number2)) return errResult;    
+        if (lengthOperand2 >= 0) {  
+            if (overflow.length > 0) {
+                number2 = parseInt(overflow, 10) + parseInt(operand2.charAt(lengthOperand2), 10);
+                overflow = '';
+            }
+            else
+                number2 = parseInt(operand2.charAt(lengthOperand2), 10);
+            if (isNaN(number2)) return errResult;                
+        }   
         
         var intermediateResult = number1 + number2;
         if (intermediateResult > 9) {
