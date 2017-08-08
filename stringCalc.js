@@ -32,23 +32,15 @@ StringCalc.prototype.Add = function (operand1, operand2) {
     for (var i = longestNumberLength - 1; i >= 0; i--) {
         var number1 = 0;
         if (lengthOperand1 >= 0) {  
-            if (overflow.length > 0) {
-                number1 = parseInt(overflow, 10) + parseInt(operand1.charAt(lengthOperand1), 10);
-                overflow = '';
-            }
-            else
-                number1 = parseInt(operand1.charAt(lengthOperand1), 10);
+            number1 = parseTheNextNumber(operand1, lengthOperand1, overflow);
+            overflow = '';            
             if (isNaN(number1)) return errResult;                
         }
         
         var number2 = 0;
         if (lengthOperand2 >= 0) {  
-            if (overflow.length > 0) {
-                number2 = parseInt(overflow, 10) + parseInt(operand2.charAt(lengthOperand2), 10);
-                overflow = '';
-            }
-            else
-                number2 = parseInt(operand2.charAt(lengthOperand2), 10);
+            number2 = parseTheNextNumber(operand2, lengthOperand2, overflow);
+            overflow = ''; 
             if (isNaN(number2)) return errResult;                
         }   
         
@@ -75,5 +67,16 @@ StringCalc.prototype.Add = function (operand1, operand2) {
         result = '0';
     return result;
 };
-    
+   
+function parseTheNextNumber(operand, lengthOperand, overflow) {
+    var number = 0;
+    if (lengthOperand >= 0) {  
+        if (overflow.length > 0) {
+            number = parseInt(overflow, 10) + parseInt(operand.charAt(lengthOperand), 10);
+        }
+        else
+            number = parseInt(operand.charAt(lengthOperand), 10);
+    }
+    return number;
+}
 module.exports = StringCalc;
