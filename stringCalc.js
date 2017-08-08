@@ -70,6 +70,9 @@ StringCalc.prototype.Add = function (operand1, operand2) {
         result = overflow + result;
     if (isResultNegative)
         result = '-' + result;
+    var isAllZeroesCheck = result.replace(/0/gi, '');
+    if (isAllZeroesCheck.length === 0)
+        result = '0';
     return result;
 };
     
