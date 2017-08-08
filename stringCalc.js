@@ -8,6 +8,7 @@ StringCalc.prototype.Add = function (operand1, operand2) {
     var lengthOperand1 = operand1.length;
     var lengthOperand2 = operand2.length;
     var isResultNegative = false;
+    var overflow = '';
     
     if (operand1.charAt(0) === "-") {
         operand1 = operand1.substr(1);
@@ -23,7 +24,6 @@ StringCalc.prototype.Add = function (operand1, operand2) {
     }
     
     var longestNumberLength = lengthOperand1;
-    var overflow = '';
     if (lengthOperand2 > longestNumberLength)
         longestNumberLength = lengthOperand2;
         
@@ -70,13 +70,10 @@ StringCalc.prototype.Add = function (operand1, operand2) {
    
 function parseTheNextNumber(operand, lengthOperand, overflow) {
     var number = 0;
-    if (lengthOperand >= 0) {  
-        if (overflow.length > 0) {
-            number = parseInt(overflow, 10) + parseInt(operand.charAt(lengthOperand), 10);
-        }
-        else
-            number = parseInt(operand.charAt(lengthOperand), 10);
-    }
+    if (overflow.length > 0) 
+        number = parseInt(overflow, 10) + parseInt(operand.charAt(lengthOperand), 10);
+    else
+        number = parseInt(operand.charAt(lengthOperand), 10);
     return number;
 }
 module.exports = StringCalc;
