@@ -1,7 +1,7 @@
 "use strict";
 
 var assert = require('assert'); 
-var StringCalc = require('./stringCalc.js');
+var NumberString = require('./stringCalc.js');
 
 // Potential to divide this up into Testcase Class per TestFixture.  It could get big nd unwieldy
 
@@ -12,7 +12,7 @@ describe("String Calculator Tests", function () {
     
     //Shared Fixture for all tests
     before(function () {
-        stringCalc = new StringCalc();
+        stringCalc = new NumberString();
     });
     
     // Fresh Fixture per test.  
