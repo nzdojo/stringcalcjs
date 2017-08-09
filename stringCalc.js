@@ -16,18 +16,7 @@ StringCalc.prototype.Add = function (operand1, operand2) {
     operationCharacteristics.isResultNegative = false;
     operationCharacteristics.overflow = '';
     
-    if (operationCharacteristics.operand1.charAt(0) === "-") {
-        operand1 = operand1.substr(1);
-        operationCharacteristics.isSubtraction = !operationCharacteristics.isSubtraction;
-        operationCharacteristics.lengthOperand1--;
-    }
-    
-    if (operand2.charAt(0) === "-") {
-        operand2 = operand2.substr(1);
-        operationCharacteristics.isResultNegative = operationCharacteristics.isSubtraction;
-        operationCharacteristics.isSubtraction = !operationCharacteristics.isSubtraction;
-        operationCharacteristics.lengthOperand2--;
-    }
+    parseOperandsForSignAndLengths(operationCharacteristics);
     
     var longestNumberLength = operationCharacteristics.lengthOperand1;
     if (operationCharacteristics.lengthOperand2 > longestNumberLength)
@@ -38,14 +27,14 @@ StringCalc.prototype.Add = function (operand1, operand2) {
     for (var i = longestNumberLength - 1; i >= 0; i--) {
         var number1 = 0;
         if (operationCharacteristics.lengthOperand1 >= 0) {  
-            number1 = parseTheNextNumber(operand1, operationCharacteristics.lengthOperand1, operationCharacteristics.overflow);
+            number1 = parseTheNextNumber(operationCharacteristics.operand1, operationCharacteristics.lengthOperand1, operationCharacteristics.overflow);
             operationCharacteristics.overflow = '';            
             if (isNaN(number1)) return errResult;                
         }
         
         var number2 = 0;
         if (operationCharacteristics.lengthOperand2 >= 0) {  
-            number2 = parseTheNextNumber(operand2, operationCharacteristics.lengthOperand2, operationCharacteristics.overflow);
+            number2 = parseTheNextNumber(operationCharacteristics.operand2, operationCharacteristics.lengthOperand2, operationCharacteristics.overflow);
             operationCharacteristics.overflow = ''; 
             if (isNaN(number2)) return errResult;                
         }   
@@ -73,7 +62,22 @@ StringCalc.prototype.Add = function (operand1, operand2) {
         result = '0';
     return result;
 };
-   
+
+function parseOperandsForSignAndLengths(operationCharacteristics) {
+    if (operationCharacteristics.operand1.charAt(0) === "-") {
+        operationCharacteristics.operand1 = operationCharacteristics.operand1.substr(1);
+        operationCharacteristics.isSubtraction = !operationCharacteristics.isSubtraction;
+        operationCharacteristics.lengthOperand1--;
+    }
+    
+    if (operationCharacteristics.operand2.charAt(0) === "-") {
+        operationCharacteristics.operand2 = operationCharacteristics.operand2.substr(1);
+        operationCharacteristics.isResultNegative = operationCharacteristics.isSubtraction;
+        operationCharacteristics.isSubtraction = !operationCharacteristics.isSubtraction;
+        operationCharacteristics.lengthOperand2--;
+    }
+}
+
 function parseTheNextNumber(operand, lengthOperand, overflow) {
     var number = 0;
     if (overflow.length > 0) 
