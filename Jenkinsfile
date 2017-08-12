@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 pipeline {
     agent { docker 'node:6.3' }
     stages {
