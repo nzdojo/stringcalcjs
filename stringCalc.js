@@ -28,6 +28,7 @@ StringCalc.prototype.Add = function (operand1, operand2) {
         var number1 = 0;
         if (operationCharacteristics.lengthOperand1 >= 0) {  
             number1 = parseTheNextNumber(operationCharacteristics.operand1, operationCharacteristics.lengthOperand1, operationCharacteristics.overflow);
+            operationCharacteristics.overflow = '';            
             if (isNaN(number1)) return errResult;                
         }
         
@@ -79,10 +80,8 @@ function parseOperandsForSignAndLengths(operationCharacteristics) {
 
 function parseTheNextNumber(operand, lengthOperand, overflow) {
     var number = 0;
-    if (overflow.length > 0) {
+    if (overflow.length > 0) 
         number = parseInt(overflow, 10) + parseInt(operand.charAt(lengthOperand), 10);
-        operationCharacteristics.overflow = '';           
-    }
     else
         number = parseInt(operand.charAt(lengthOperand), 10);
     return number;
