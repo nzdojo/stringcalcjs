@@ -1,1 +1,1 @@
-Test driven a string, numbers represented as strings, calculator. 
+Test drive a string (numbers represented as strings) calculator. 
